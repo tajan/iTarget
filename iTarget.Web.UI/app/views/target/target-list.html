@@ -1,0 +1,46 @@
+﻿<h3 ng-controller="CategoryController as category" ng-init="category.initModel()">
+    <!-- START Action list-->
+    <div class="pull-right">
+        <!-- START button group-->
+        <div uib-dropdown="dropdown" class="btn-group">
+            <button type="button" class="btn btn-default tweaked-margin">Action</button>
+            <button type="button" uib-dropdown-toggle="" class="btn dropdown-toggle btn-default">
+                <span class="caret"></span>
+                <span class="sr-only">default</span>
+            </button>
+            <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
+                <li>
+                    <a ui-sref="iTarget.target-create({categoryid: category.model.id})">Add Target</a>
+                </li>
+                <li>
+                    <a ui-sref="iTarget.category-update({id: category.model.id})">Edit Category</a>
+                </li>
+                <li>
+                    <a href="#">Something else here</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="#">Separated link</a>
+                </li>
+            </ul>
+        </div>
+        <!-- END button group-->
+    </div>
+    <!-- END Action list    -->
+    {{ category.model.Title }}
+    <div class="pull-left">
+        <span class="fa-stack">
+            <em class="{{category.model.Icon}} fa-stack-1x"></em>
+        </span>
+    </div>
+</h3>
+<div class="row-masonry row-masonry-xl-6 row-masonry-lg-4 row-masonry-md-3 row-masonry-sm-2" ng-controller="TargetController as target" ng-init="target.initCategoryView()">
+    <div class="col-masonry" ng-repeat="item in target.model">
+        <div class="box-placeholder m0">
+            <p class="text-center text-muted">
+                <strong><a ui-sref="iTarget.target-dashboard({id: item.id})"> {{item.Title}}</a></strong>
+            </p>
+            <p>{{item.Description}}</p>
+        </div>
+    </div>
+</div>

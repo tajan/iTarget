@@ -1,0 +1,27 @@
+<page-header>
+    Target
+</page-header>
+<page-row>
+    <page-col>
+        <panel>
+            <panel-heading>Create Target</panel-heading>
+            <panel-body>
+                <span ng-controller="TargetController as target">
+                    <form-horizontal>
+                        <form-textbox label="Title" placeholder="Title" ng-model="target.model.Title"></form-textbox>
+                        <form-textarea label="Description" placeholder="Description" ng-model="target.model.Description"></form-textarea>
+                        <form-dropdown label="Category" ng-model="target.model.CategoryId" values="categories"></form-dropdown>
+                        <form-date-picker label="Start" ng-model="target.model.StartDate"></form-date-picker>
+                        <form-date-picker label="End" ng-model="target.model.EndDate"></form-date-picker>
+                        <form-style-picker label="Style" ng-model="target.model.Style"></form-style-picker>
+                        <form-file-upload label="Files" ng-model="target.model.Files"></form-file-upload>
+                        <form-action-panel>
+                            <form-button action="cancel"></form-button>
+                            <form-button action="submit" on-click="target.create()"></form-button>
+                        </form-action-panel>
+                    </form-horizontal>
+                </span>
+            </panel-body>
+        </panel>
+    </page-col>
+</page-row>

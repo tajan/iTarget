@@ -1,0 +1,26 @@
+<page-header>
+    Activity
+</page-header>
+<page-row>
+    <page-col>
+        <panel>
+            <panel-heading>Update Activity</panel-heading>
+            <panel-body>
+                <span ng-controller="ActivityController as activity" ng-init="activity.initModel()">
+                    <form-horizontal>
+                        <form-textbox label="Title" placeholder="Title" ng-model="activity.model.Title"></form-textbox>
+                        <form-textbox label="Duration" placeholder="Duration" ng-model="activity.model.Duration"></form-textbox>
+                        <form-textarea label="Description" placeholder="Description" ng-model="activity.model.Description"></form-textarea>
+                        <form-date-picker label="Date" ng-model="activity.model.Date"></form-date-picker>
+                        <form-file-upload label="Files" ng-model="activity.model.Files"></form-file-upload>
+                        <form-action-panel>
+                            <form-button action="cancel"></form-button>
+                            <form-button action="submit" on-click="activity.update()"></form-button>
+                            <form-button action="delete" on-click="activity.remove()"></form-button>
+                        </form-action-panel>
+                    </form-horizontal>
+                </span>
+            </panel-body>
+        </panel>
+    </page-col>
+</page-row>

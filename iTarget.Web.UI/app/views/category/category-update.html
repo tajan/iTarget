@@ -1,0 +1,23 @@
+<page-header>
+    Category
+</page-header>
+<page-row>
+    <page-col>
+        <panel>
+            <panel-heading>Update Category</panel-heading>
+            <panel-body>
+                <span ng-controller="CategoryController as category" ng-init="category.initModel()">
+                    <form-horizontal>
+                        <form-textbox label="Title" placeholder="Title" ng-model="category.model.Title"></form-textbox>
+                        <form-icon-picker label="Icon" ng-model="category.model.Icon"></form-icon-picker>
+                        <form-action-panel>
+                            <form-button action="cancel"></form-button>
+                            <form-button action="submit" on-click="category.update()"></form-button>
+                            <form-button action="delete" on-click="category.remove()"></form-button>
+                        </form-action-panel>
+                    </form-horizontal>
+                </span>
+            </panel-body>
+        </panel>
+    </page-col>
+</page-row>

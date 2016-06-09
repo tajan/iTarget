@@ -1,0 +1,195 @@
+﻿<!--<div class="pull-right">
+    <p class="m0">
+        <small class="mr">Single column</small>
+        <label class="switch pull-right">
+            <input type="checkbox" checked="checked" ng-model="timelineAlt" />
+            <span></span>
+        </label>
+    </p>
+</div>-->
+<div class="pull-right" ng-init="target.initModel()">
+    <div uib-dropdown="dropdown" class="btn-group">
+        <button type="button" class="btn btn-default tweaked-margin">Action</button>
+        <button type="button" uib-dropdown-toggle="" class="btn dropdown-toggle btn-default">
+            <span class="caret"></span>
+            <span class="sr-only">default</span>
+        </button>
+        <ul role="menu" class="dropdown-menu dropdown-menu-right animated fadeInUpShort">
+            <li>
+                <a ui-sref="iTarget.target-update({id: target.model.id})">Edit Target</a>
+            </li>
+            <li>
+                <a ui-sref="iTarget.activity-create({targetid: target.model.id})">Add Activity</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">Separated link</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<h3>
+    {{ target.model.Title }}
+    <small>
+        {{ target.model.Description }}
+    </small>
+</h3>
+<div class="row" ng-controller="ActivityController as activity" ng-init="activity.initTargetView()">
+    <aside class="col-lg-9">
+        <!-- START timeline-->
+        <ul ng-class="timelineAlt ? 'timeline-alt' : 'timeline'" ng-init="timelineAlt=false">
+            <li class="timeline-end">
+                <a title="Add Activity" ui-sref="iTarget.activity-create({targetid: target.model.id})" class="timeline-badge">
+                    <em class="fa fa-plus"></em>
+                </a>
+            </li>
+            <li ng-repeat="dateView in activity.model | orderBy: '-Date' | uniquedate: 'Date'" data-datetime="{{dateView.Date | date:'yyyy-MM-dd'}}" class="timeline-separator"></li>
+
+            <li>
+                <div class="timeline-badge primary">
+                    <em class="fa fa-users"></em>
+                </div>
+                <div class="timeline-panel">
+                    <div ng-class="timelineAlt ? 'right' : 'left'" class="popover">
+                        <h4 class="popover-title">Client Meeting</h4>
+                        <div class="arrow"></div>
+                        <div class="popover-content">
+                            <p>
+                                Av 123 St - Floor 2
+                                <br />
+                                <small>Pellentesque ut diam velit, eget porttitor risus. Nullam posuere euismod volutpat.</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+
+    </aside>
+    <aside class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">Contributors</div>
+            </div>
+            <!-- START list group-->
+            <scrollable height="180" class="list-group">
+                <!-- START list group item-->
+                <a href="#" class="list-group-item">
+                    <div class="media-box">
+                        <div class="pull-left">
+                            <img src="app/img/user/02.jpg" alt="Image" class="media-box-object img-circle thumb32" />
+                        </div>
+                        <div class="media-box-body clearfix">
+                            <small class="pull-right">2h</small>
+                            <strong class="text-primary">
+                                Catherine Ellis
+                            </strong>
+
+                        </div>
+                    </div>
+                </a>
+                <!-- END list group item-->
+                <!-- START list group item-->
+                <a href="#" class="list-group-item">
+                    <div class="media-box">
+                        <div class="pull-left">
+                            <img src="app/img/user/03.jpg" alt="Image" class="media-box-object img-circle thumb32" />
+                        </div>
+                        <div class="media-box-body clearfix">
+                            <small class="pull-right">3h</small>
+                            <strong class="media-box-heading text-primary">
+                                Jessica Silva
+                            </strong>
+
+                        </div>
+                    </div>
+                </a>
+                <!-- END list group item-->
+                <!-- START list group item-->
+                <a href="#" class="list-group-item">
+                    <div class="media-box">
+                        <div class="pull-left">
+                            <img src="app/img/user/09.jpg" alt="Image" class="media-box-object img-circle thumb32" />
+                        </div>
+                        <div class="media-box-body clearfix">
+                            <small class="pull-right">4h</small>
+                            <strong class="media-box-heading text-primary">
+                                Jessie Wells
+                            </strong>
+
+                        </div>
+                    </div>
+                </a>
+                <!-- END list group item-->
+                <!-- START list group item-->
+                <a href="#" class="list-group-item">
+                    <div class="media-box">
+                        <div class="pull-left">
+                            <img src="app/img/user/12.jpg" alt="Image" class="media-box-object img-circle thumb32" />
+                        </div>
+                        <div class="media-box-body clearfix">
+                            <small class="pull-right">1d</small>
+                            <strong class="media-box-heading text-primary">
+                                <span class="circle circle-danger circle-lg text-left"></span>Rosa Burke
+                            </strong>
+
+                        </div>
+                    </div>
+                </a>
+                <!-- END list group item-->
+                <!-- START list group item-->
+                <a href="#" class="list-group-item">
+                    <div class="media-box">
+                        <div class="pull-left">
+                            <img src="app/img/user/10.jpg" alt="Image" class="media-box-object img-circle thumb32" />
+                        </div>
+                        <div class="media-box-body clearfix">
+                            <small class="pull-right">2d</small>
+                            <strong class="media-box-heading text-primary">
+                                <span class="circle circle-danger circle-lg text-left"></span>Michelle Lane
+                            </strong>
+
+                        </div>
+                    </div>
+                </a>
+                <!-- END list group item-->
+            </scrollable>
+            <!-- END list group-->
+
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">Files</div>
+            </div>
+            <div class="list-group">
+                <div class="list-group-item" ng-repeat="item in target.model.Files | orderBy: '-UpdateTicks'">
+                    <div class="media-box">
+                        <div class="pull-left">
+                            <!--<em class="fa fa-download"></em>-->
+                            <span class="fa-stack">
+                                <em class="fa fa-circle fa-stack-2x text-info"></em>
+                                <em class="fa fa-download fa-stack-1x fa-inverse text-white"></em>
+
+                            </span>
+                        </div>
+                        <div class="media-box-body clearfix">
+                            <small class="text-muted pull-right ml">{{item.Size | filesize}}</small>
+                            <div class="media-box-heading">
+                                <a href="#" class="text-info m0">{{item.Name}}</a>
+                            </div>
+                            <p class="m0">
+                                <small class="text-muted">
+                                    {{item.UpdateDate | date:'medium'}}
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+</div>
